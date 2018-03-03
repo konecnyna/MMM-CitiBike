@@ -1,0 +1,24 @@
+{
+  "name": "mmm-citibike",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/konecnyna/MMM-CitiBike.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/konecnyna/MMM-CitiBike/issues"
+  },
+  "homepage": "https://github.com/konecnyna/MMM-CitiBike#readme",
+  "dependencies": {
+    "citibike": "^2.3.1",
+    "countdown-js": "^1.0.2",
+    "request": "^2.83.0"
+  }
+}
