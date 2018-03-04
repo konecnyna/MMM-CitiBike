@@ -10,9 +10,8 @@ module.exports = NodeHelper.create({
     },
 
     start: function() {
-        console.log("mmm-citibike state");
         this.timer = false;
-        this.stations = ['0ba48fdfd84cd4b871bfd83c406d9d25', '7448843186d5f3149d39dd7b7015238c', '707f06d68130f07c41591c107a02ba36'];            
+        this.stations = ['0ba48fdfd84cd4b871bfd83c406d9d25', '707f06d68130f07c41591c107a02ba36', '7448843186d5f3149d39dd7b7015238c'];            
     },
 
     getBikeData: function(self, config) {
@@ -54,7 +53,6 @@ module.exports = NodeHelper.create({
     },
 
     socketNotificationReceived: function(notification, payload) {
-        console.log(payload);
         if (notification === "GET_CITIBIKE_STATUS") {
             this.getBikeData(this, payload);
         }

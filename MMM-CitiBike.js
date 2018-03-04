@@ -18,7 +18,7 @@ Module.register("MMM-CitiBike", {
 	},
 
 	defaults: {
-		fetchInterval: 15 * 1000,
+		fetchInterval: 60 * 5 * 1000,
 	},
 
 	start: function() {
@@ -47,38 +47,42 @@ Module.register("MMM-CitiBike", {
 		if (this.bikes) {
 			var table = document.createElement("table");
 			var headerRow = document.createElement("tr");
+			this.createHeader(headerRow, "Bikes");					
 			this.createHeader(headerRow, "Address");
-			this.createHeader(headerRow, "🚲 Left");		
 			this.createHeader(headerRow, "Updated");	
 			table.appendChild(headerRow);	
 			
 			this.bikes.forEach(bike => {
-				console.log(bike);
 				var tr = document.createElement("tr");
 
 				var td = document.createElement("td");
 				var td2 = document.createElement("td");
 				var td3 = document.createElement("td");
 
-				td.innerHTML = bike.name;
-				td.className = 'small';
+				td.innerHTML = bike.free_bikes;
+				td.style = "text-align:center";
 
-				td2.innerHTML = bike.free_bikes;
-				td2.style = "text-align:center";
+				td2.innerHTML = bike.name;
+				td2.style = "padding-right: 8px";
+				td2.className = 'small';
 
+				
 				td3.innerHTML = ` As of ${moment.unix(bike.extra.last_updated).fromNow()}`;
 				td3.className = 'xsmall';
 				
 				tr.appendChild(td);
 				tr.appendChild(td2);
 				tr.appendChild(td3);
-				table.appendChild(tr);
-				
-				
-				
+				table.appendChild(tr);									
 			});
 
+
+			const h6 = document.createElement('div');
+			h6.innerHTML = `As of: ${new Date()}`;
+			h6.style = "font-size:12px";
+
 			container.appendChild(table);
+			container.appendChild(h6);
 		
 		}
 		
