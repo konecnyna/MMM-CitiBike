@@ -30,13 +30,18 @@ module.exports = NodeHelper.create({
                 console.error(error);
                 return;
             }
-            const bikes = JSON.parse(body).network.stations.filter(station => {
-                return self .stations.includes(station.id);
-            });
 
-            self.sendSocketNotification('CITIBIKE_DATA', {
-                data: bikes,                    
-            });            
+            try {             
+                const bikes = JSON.parse(body).network.stations.filter(station => {
+                    return self.stations.includes(station.id);
+                });
+
+                self.sendSocketNotification('CITIBIKE_DATA', {
+                    data: bikes,                    
+                });    
+            } catch (e) {
+                console.error(e);
+            }       
         });
         
 
